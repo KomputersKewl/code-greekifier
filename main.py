@@ -1,5 +1,4 @@
 import os, sys
-import shutil
 
 def file_exists(path):
     return os.path.exists(path)

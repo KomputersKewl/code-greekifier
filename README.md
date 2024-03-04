@@ -6,6 +6,8 @@ The project is finally completed, and I couldn't be prouder. I've learned quite 
 
 Feel free to provide feedback!
 
+(Recently discovered that Greek question marks so greatly resemble semicolons that their code point will decompose into that of a semicolon, so it may not always work!)
+
 ## To Do:
 
 - Other user-friendly changes, i.e. nicer UI
