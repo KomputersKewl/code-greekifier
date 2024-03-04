@@ -56,8 +56,6 @@ def fixed_inputs(text, pos_values: list=[]):
     else:
         fixed_inputs(text, pos_values)
 
-running = True
-
 def app():
     cwd = os.getcwd()
 
@@ -71,10 +69,8 @@ def app():
         elif app_func == "g":
             greekify(cwd)
         elif app_func == "q":
-            return False
+            return
 
 if __name__ == "__main__":
-    while running:
-        running = app()
-
+    app()
     sys.exit()
