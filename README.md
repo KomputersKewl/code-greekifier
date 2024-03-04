@@ -4,9 +4,9 @@ A friend showed me a meme depicting a semicolon (;) and an identical Greek quest
 
 The project is finally completed, and I couldn't be prouder. I've learned quite a bit about Python's os module and (especially) how to use Git and Github in general, as this is my first Github repository.
 
-Feel free to provide feedback!
-
 (Recently discovered that Greek question marks so greatly resemble semicolons that their code point will decompose into that of a semicolon, so it may not always work!)
+
+Feel free to provide feedback!
 
 ## To Do:
 
