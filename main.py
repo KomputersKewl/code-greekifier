@@ -24,7 +24,6 @@ def greekify(cwd: str):
         return
 
     file = os.path.basename(src)
-    file_basename, file_ext = os.path.splitext(file)
     greekified_path = cwd + "/greekified-" + file
 
     if os.path.exists(greekified_path): # Ensures that no Greekified file already exists
@@ -61,7 +60,7 @@ def app():
 
     print("Hello! This is the code Greekifier!")
     while True:
-        print("Current directory: {0}".format(cwd))
+        print(f"Current directory: {cwd}")
         app_func = fixed_inputs("What would you like to do? (\"s\" to specify current directory / \"g\" to Greekify file / \"q\" to quit application) ", ["g", "s", "q"])
 
         if app_func == "s":
