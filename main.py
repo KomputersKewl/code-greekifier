@@ -1,14 +1,14 @@
-import os, sys
-
-def file_exists(path):
-    return os.path.exists(path)
+import os
+from os.path import exists as file_exists
 
 # Used to determine directory to place Greekified files
 def specify_cwd():
-    path = input("Specify a directory to create parsed files: ")
-    if not file_exists(path):
+
+    while True:
+        path = input("Specify a directory to create parsed files: ")
+        if file_exists(path):
+            return path
         print("Not a directory!")
-        path = specify_cwd()
     
     return path
 
@@ -17,35 +17,35 @@ def greekify(cwd: str):
 
     src = input("Specify a file to Greekify! ")
 
-    if not file_exists(cwd + "/" + src): # Checks if file exists
+    full_path = cwd + "/" + src
+    
+    if not file_exists(full_path): # Checks if file exists
         print ("File does not exist!")
         return
 
     file = os.path.basename(src)
-    full_path = cwd + "/" + src
-    
     file_basename, file_ext = os.path.splitext(file)
+    greekified_path = cwd + "/greekified-" + file
 
-    if os.path.exists(cwd + "/greekified-" + file): # Ensures that no Greekified file already exists
+    if os.path.exists(greekified_path): # Ensures that no Greekified file already exists
         print("Greekified file already exists!")
         return
     else:
         try:
             with open(full_path, "r") as f:
-                f_text = f.read().split("\n") # Splits file into list for each instance of \n
+                f_text = f.read()
 
         except:
             print("Could not read file.")
+            return
 
-    # Iterates through file text and replaces semicolons with Greek question marks
-    greekified = map(lambda line: line.replace(";", "\u037e"), f_text) # Used unicode as to avoid confusion
+    greekify = f_text.replace(";", "\u037e") # Used unicode so as to avoid confusion
 
     # Appends code to new file
-    with open(cwd + "/greekified-" + file, "w") as nf:
-        for line in greekified:
-            nf.write(line + "\n")
+    with open(greekified_path, "w") as nf:
+        nf.write(greekify)
 
-        print("Successfully created Greekified file! Congrats!")
+    print("Successfully created Greekified file! Congrats!")
 
 # Handles user text input
 def fixed_inputs(text, pos_values: list=[]):
@@ -73,4 +73,3 @@ def app():
 
 if __name__ == "__main__":
     app()
-    sys.exit()
